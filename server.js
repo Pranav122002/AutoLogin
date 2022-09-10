@@ -1,5 +1,11 @@
 const express = require("express");
-var webdriver = require("selenium-webdriver");
+const webdriver = require("selenium-webdriver");
+const {By} = require('selenium-webdriver');
+const chrome = require('selenium-webdriver/chrome');
+
+const options = new chrome.Options();
+options.excludeSwitches("enable-automation");
+
 const mongoose = require("mongoose");
 
 const app = express();
@@ -7,7 +13,7 @@ const app = express();
 const http = require("http").Server(app);
 
 mongoose
-  .connect("mongodb://localhost:27017/autoproject", {
+  .connect("mongodb://localhost:27017/autologin", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -178,6 +184,7 @@ app.post("/logincheck", (req, res) => {
             const passwordkey = password;
             const driver = new webdriver.Builder()
               .forBrowser("chrome")
+              .setChromeOptions(options)
               .build();
             driver.manage().window().maximize();
             driver.get("https://www.instagram.com/");
@@ -224,7 +231,7 @@ app.post("/logincheck", (req, res) => {
             const passwordkey = password
           
           
-            var driver = new webdriver.Builder().forBrowser("chrome").build();
+            var driver = new webdriver.Builder().forBrowser("chrome").setChromeOptions(options).build();
             driver.manage().window().maximize();
             driver.get("https://codeforces.com/enter?back=%2Fregister");
           
@@ -256,7 +263,7 @@ app.post("/logincheck", (req, res) => {
             const usernamekey = username;
             const passwordkey = password;
           
-            var driver = new webdriver.Builder().forBrowser("chrome").build();
+            var driver = new webdriver.Builder().forBrowser("chrome").setChromeOptions(options).build();
             driver.manage().window().maximize();
             driver.get("https://www.netflix.com/in/login");
           
@@ -287,7 +294,7 @@ app.post("/logincheck", (req, res) => {
                   const passwordkey = password
                 
                 
-            var driver = new webdriver.Builder().forBrowser("chrome").build();
+            var driver = new webdriver.Builder().forBrowser("chrome").setChromeOptions(options).build();
             driver.manage().window().maximize();
             driver.get(
               "https://www.amazon.in/ap/signin?openid.pape.max_auth_age=0&openid.return_to=https%3A%2F%2Feu.primevideo.com%2Fauth%2Freturn%2Fref%3Dav_auth_ap%3F_t%3Dsg1zCoRH-juNkg2Ie0TiGQLDi2gKlH_BuNby_ooSg2HvpAAAAAQAAAABi-NKgcmF3AAAAAPgWC9WfHH8iB-olH_E9xQ%26location%3D%2F%3Fref_%253Ddv_web_force_root&openid.identity=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&accountStatusPolicy=P1&openid.assoc_handle=amzn_prime_video_sso_in&openid.mode=checkid_setup&siteState=257-5018018-4776239&language=en_US&openid.claimed_id=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0%2Fidentifier_select&openid.ns=http%3A%2F%2Fspecs.openid.net%2Fauth%2F2.0"
@@ -315,7 +322,7 @@ app.post("/logincheck", (req, res) => {
             const passwordkey = password
           
           
-            var driver = new webdriver.Builder().forBrowser("chrome").build();
+            var driver = new webdriver.Builder().forBrowser("chrome").setChromeOptions(options).build();
             driver.manage().window().maximize();
             driver.get("https://www.linkedin.com/login");
           
@@ -344,7 +351,7 @@ app.post("/logincheck", (req, res) => {
             const passwordkey = password
           
           
-            var driver = new webdriver.Builder().forBrowser("chrome").build();
+            var driver = new webdriver.Builder().forBrowser("chrome").setChromeOptions(options).build();
             driver.manage().window().maximize();
             driver.get(
               "https://www.reddit.com/login/?dest=https%3A%2F%2Fwww.reddit.com%2F"
@@ -375,7 +382,7 @@ app.post("/logincheck", (req, res) => {
           });
           
           app.get("/whatsapp", (req, res) => {
-            var driver = new webdriver.Builder().forBrowser("chrome").build();
+            var driver = new webdriver.Builder().forBrowser("chrome").setChromeOptions(options).build();
             driver.manage().window().maximize();
             driver.get("https://web.whatsapp.com/");
           
@@ -391,7 +398,7 @@ app.post("/logincheck", (req, res) => {
             const usernamekey = username;
             const passwordkey = password;
 
-            var driver = new webdriver.Builder().forBrowser("chrome").build();
+            var driver = new webdriver.Builder().forBrowser("chrome").setChromeOptions(options).build();
             driver.manage().window().maximize();
             driver.get("https://www.facebook.com/");
 
