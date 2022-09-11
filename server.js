@@ -5,6 +5,7 @@ const chrome = require('selenium-webdriver/chrome');
 
 const options = new chrome.Options();
 options.excludeSwitches("enable-automation");
+options.addArguments("--incognito");
 
 const mongoose = require("mongoose");
 
